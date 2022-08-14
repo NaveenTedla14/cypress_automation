@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-08-14T13:27:51.202Z",
+    "end": "2022-08-14T13:28:31.080Z",
+    "duration": 39878,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ae0d1837-d2db-4700-9630-b8d4dfb5ea63",
+      "title": "",
+      "fullFile": "cypress/integration/tests/TestDemoSite.js",
+      "file": "cypress/integration/tests/TestDemoSite.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bd08503b-45fe-485a-955d-39cc22886f04",
+          "title": "demo page features",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify select items functionality",
+              "fullTitle": "demo page features Verify select items functionality",
+              "timedOut": null,
+              "duration": 20356,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('Opening section Widgets --> Select Menu');\ncy.xpath(this.locators.initialWidgetsOption).click({\n  force: true\n});\ncy.xpath(this.locators.widgetsMenu).scrollIntoView().click();\ncy.xpath(this.locators.selectMenu).click();\ncy.log('user selects option from old menu');\ncy.xpath(this.locators.oldSelectMenu).select(this.data.oldMenuOption).should('have.value', 3);\ncy.log('user selects  multiple options from Multiselect drop down list');\ncy.xpath(this.locators.multiSelectList).click();\nlet valuesToBeSelected = this.data.multiSelectOption.split(',');\nvaluesToBeSelected.forEach(item => {\n  cy.xpath(this.locators.multiSelectOptions).contains(item).click();\n});\ncy.xpath(this.locators.multiSelectOptionCount).should('have.length', 2);\ncy.log('user selects option from Standard Select Option list ');\nlet valuesToBeSelectedStandardSelectOption = this.data.standardSelectOption.split(',');\ncy.xpath(this.locators.standardSelectList).select([valuesToBeSelectedStandardSelectOption[0], valuesToBeSelectedStandardSelectOption[1]]).invoke('val').should('deep.equal', [valuesToBeSelectedStandardSelectOption[0].toLowerCase(), valuesToBeSelectedStandardSelectOption[1].toLowerCase()]);",
+              "err": {},
+              "uuid": "d4f4bf15-4747-4c06-9ce7-5f60f417e82d",
+              "parentUUID": "bd08503b-45fe-485a-955d-39cc22886f04",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify alert functionality",
+              "fullTitle": "demo page features Verify alert functionality",
+              "timedOut": null,
+              "duration": 3174,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('User verifies different types of alerts');\ncy.xpath(this.locators.demoHeader).click({\n  force: true\n});\ncy.xpath(this.locators.initialWidgetsOption).click();\ncy.xpath(this.locators.AlertsHeader).scrollIntoView().click();\ncy.xpath(this.locators.AlertsSection).click();\ncy.log('User clicks on alert with confirmation box');\ncy.xpath(this.locators.alertConfirmationButton).click();\ncy.on('window:confirm', string => {\n  expect(string).to.contains('Do you confirm action?');\n});\ncy.log('User verifies the text returned from alert with confirmation box');\ncy.xpath(this.locators.textReturnedFromConfirmation).should('contain.text', 'You selected Ok');\ncy.log('User clicks on alert with prompt box');\ncy.window().then(function (promptelement) {\n  cy.stub(promptelement, \"prompt\").returns(\"Hello\");\n  cy.xpath(this.locators.alertPromptButton).click();\n});\ncy.log('User verifies the text returned from alert with prompt box');\ncy.xpath(this.locators.textReturnedFromPrompt).should('contain.text', 'You entered Hello');",
+              "err": {},
+              "uuid": "8889b9ef-6a85-4aeb-9df6-731ec9d06240",
+              "parentUUID": "bd08503b-45fe-485a-955d-39cc22886f04",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User submits sample form",
+              "fullTitle": "demo page features User submits sample form",
+              "timedOut": null,
+              "duration": 5844,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('User fills the details available and submits the form');\ncy.xpath(this.locators.demoHeader).click({\n  force: true\n});\ncy.xpath(this.locators.initialWidgetsOption).click();\ncy.xpath(this.locators.formsHeader).scrollIntoView().click();\ncy.xpath(this.locators.practiceFormSection).click();\ncy.log('User enters first name');\ncy.xpath(this.locators.firstName).type(this.data.form_data[0]);\ncy.log('User enters last name');\ncy.xpath(this.locators.lastName).type(this.data.form_data[1]);\ncy.log('User selects gender as Male');\ncy.xpath(this.locators.gender).check(this.data.form_data[2], {\n  force: true\n});\ncy.log('User selects hobby as sports');\ncy.xpath(this.locators.hobbies).check('1', {\n  force: true\n});\ncy.log('User selects state as Uttar Pradesh');\ncy.xpath(this.locators.state).click({\n  force: true\n});\ncy.xpath(this.locators.stateOptions).contains(this.data.form_data[4]).click({\n  force: true\n});\ncy.log('User selects city as Agra');\ncy.xpath(this.locators.city).click({\n  force: true\n});\ncy.xpath(this.locators.cityOptions).contains(this.data.form_data[5]).click({\n  force: true\n});\ncy.log('User enters mobile number');\ncy.xpath(this.locators.userMobile).type(this.data.form_data[6]);\ncy.log('User submits the form');\ncy.xpath(this.locators.submitButton).click();\ncy.log('User verifies data entered/selected');\nthis.data.form_data.forEach(data => {\n  cy.xpath(this.locators.tableData).should('contain.text', data);\n});",
+              "err": {},
+              "uuid": "4a733592-8837-479a-9fe9-d8e944be340c",
+              "parentUUID": "bd08503b-45fe-485a-955d-39cc22886f04",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify iframe functionality",
+              "fullTitle": "demo page features Verify iframe functionality",
+              "timedOut": null,
+              "duration": 3312,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('User verifies items present inside an iframe');\ncy.xpath(this.locators.demoHeader).click({\n  force: true\n});\ncy.xpath(this.locators.initialWidgetsOption).click();\ncy.xpath(this.locators.AlertsHeader).scrollIntoView().click();\ncy.xpath(this.locators.FramesSection).click();\ncy.log('User Verifies text in first frame');\ngetIframeBody('frame1').find('h1[id=\"sampleHeading\"]').should('have.text', this.data.iframe_text);\ncy.log('User Verifies text in second frame');\ngetIframeBody('frame2').find('h1[id=\"sampleHeading\"]').should('have.text', this.data.iframe_text);",
+              "err": {},
+              "uuid": "2f798975-37fa-47a4-8263-5e7fb588eee3",
+              "parentUUID": "bd08503b-45fe-485a-955d-39cc22886f04",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify menu and submenu functionality",
+              "fullTitle": "demo page features Verify menu and submenu functionality",
+              "timedOut": null,
+              "duration": 3849,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('User verifies the main menu and sub menu items');\ncy.xpath(this.locators.demoHeader).click({\n  force: true\n});\ncy.xpath(this.locators.initialWidgetsOption).click({\n  force: true\n});\ncy.xpath(this.locators.widgetsMenu).scrollIntoView().click();\ncy.xpath(this.locators.menu).click();\ncy.wait(1000);\ncy.log('User hovers mouse on main menu 2');\ncy.xpath(this.locators.mainMenu2).realHover();\ncy.xpath(this.locators.optionsMainMenu2).should('have.length', 3);\ncy.wait(1000);\ncy.log('User hovers mouse on sub menu of main menu 2');\ncy.xpath(this.locators.subMenuOfMainMenu2).realHover();\ncy.xpath(this.locators.optionssubMenuOfMainMenu2).should('have.length', 2);",
+              "err": {},
+              "uuid": "68783f11-203e-4eae-a312-4cf4e5020b8b",
+              "parentUUID": "bd08503b-45fe-485a-955d-39cc22886f04",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d4f4bf15-4747-4c06-9ce7-5f60f417e82d",
+            "8889b9ef-6a85-4aeb-9df6-731ec9d06240",
+            "4a733592-8837-479a-9fe9-d8e944be340c",
+            "2f798975-37fa-47a4-8263-5e7fb588eee3",
+            "68783f11-203e-4eae-a312-4cf4e5020b8b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 36535,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

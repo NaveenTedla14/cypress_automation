@@ -1,0 +1,15 @@
+{
+  "oldMenuOption": "Yellow",
+  "multiSelectOption": "Green,Blue",
+  "standardSelectOption": "Opel,Audi",
+  "form_data": [
+    "firstName1",
+    "lastName1",
+    "Male",
+    "Sports",
+    "Uttar Pradesh",
+    "Agra",
+    "9819635347"
+  ],
+  "iframe_text": "This is a sample page"
+}
