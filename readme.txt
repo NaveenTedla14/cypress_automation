@@ -12,5 +12,5 @@ C] Reports:
    Reports can be viewed at 'cypress/reports/mochareports/report.html'.
 
 D] to execute tests in desired browsers
-   npm run pretest && npm run scripts -- --browser chrome || npm run posttest (will launch chrome headless)
-   npm run pretest && npm run scripts -- --browser chrome --headed || npm run posttest (will launch chrome browser)
+   npm run pretest && npm run scripts -- --browser chrome && npm run posttest (will launch chrome headless)
+   npm run pretest && npm run scripts -- --browser chrome --headed && npm run posttest (will launch chrome browser)
